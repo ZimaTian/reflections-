@@ -1,0 +1,213 @@
+
+------基础------
+
+- 查看版本
+
+git --version
+
+
+
+
+
+-git clone 后空格跟某个git库，进行clone：
+
+
+git clone https://github.com/udacity/asteroids.git
+
+
+
+
+
+-进入上面的库：(默认asteroids是放在mac的home文件下的）
+
+
+cd asteroids/
+
+
+
+
+
+-查看commit历史日志（会显示各个commit的id，变化，comments等）
+
+
+git log 
+
+
+按q退出
+
+
+
+也可使用 git log --graph --oneline 来查看所有的log
+
+
+-比较两个commit区别
+
+
+git diff (commit id1) (commit id2)
+
+
+
+注意:id可以只写前四位
+
+
+
+-显示本次commit在之前一次基础上进行了什么更改
+
+git show (commit id)
+
+
+
+
+- 比较工作区working directory和暂存区staging area
+
+git diff
+
+
+
+- 比较版本库repository最新的提交commit中的文件和暂存区staging area的文件区别
+
+git diff --staged
+
+
+- 列出每次提交，所更改内容的统计数据
+
+
+
+git log --stat
+
+
+- 将repository（版本库）恢复到之前的版本内容
+
+git checkout (some previous id)
+
+
+
+------创建git repository------
+
+
+
+-创建一个git repository（若某个folder下没有.git文件，即还不是一个repository）
+
+git init
+
+
+
+-查看当前git repository的状态
+
+git status 
+
+
+------将工作目录（working directory）中的文件加入到staging area(暂存区)------
+
+git add (file name )
+
+
+
+------ 将放入暂存区的文件进行提交------
+
+git commit -m 'write your commit message here' 
+
+或者用
+
+git commit
+
+这会打开sublime，然后可以编写commit信息
+
+
+
+------ 分支------
+
+- 查看当前分支（默认的主分支名称是master）
+
+git branch 
+
+
+
+-创建新的分支
+
+git branch (branch name)
+
+
+
+-切换到某个分支
+
+git checkout (branch name)
+
+切换之后，用git branch 命令确认一下是否切换成功。成功后，就可以修改文件，然后用git add 之类的命令了
+
+
+
+------合并分支------
+
+-合并两个分支
+
+git merge (branch 1 ) (branch 2)
+
+
+
+-取消合并
+
+git merge --abort
+
+
+
+------github使用------
+
+在要上传的本地的版本库repository中的某个branch到github，要先创建一个remote repository，然后通过这个remote repo来push到github上
+
+
+
+-创建一个连接到github上创建的remote repository，并命名为origin。括号内为github创建的对应repo的链接
+
+git remote add origin (https://github.com/...)
+
+
+
+-查看当前的remote repo名称
+
+git remote
+
+或
+
+git remote -v 
+
+来显示更详细的信息
+
+
+
+-本地到github的同步：将当前本地的branch推送（上传）到github（这里以master branch 为例）
+
+git push origin master 
+
+
+
+-github到本地的同步：若在github上进行了文件添加、commit等更改，拉取（下载）到本地branch
+
+git pull origin master
+
+
+
+-从github下载（clone）一份repo到本地。此处以recipes 版本库repo为例：进入想要clone的位置（cd  some_location）后：
+
+git clone (https://github.com/ZimaTian/recipes.git)
+
+clone后系统会自动在本地创建名为origin的远程版本库 remote repo （可使用 git remote -v确认）
+
+
+
+------------
+
+其他知识点
+
+
+
+- git将最新的提交commit称为head
+
+
+
+- (非git) cd (folder name) 会转移到此目录
+
+
+
+
+- (非git) ls -a会列出当前目录下的所有文件（包括.开头的隐藏文件）
